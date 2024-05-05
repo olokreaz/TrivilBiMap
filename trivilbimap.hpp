@@ -44,6 +44,26 @@ namespace deteil {
 		std::optional< Second > result_ { };
 	};
 
+	template< class First, class Second > class SwitchBySecond final
+	{
+	public:
+		constexpr explicit SwitchBySecond( Second search ) noexcept
+			: search_ {search} { }
+
+		constexpr SwitchBySecond& Case( First first, Second second ) noexcept
+		{
+			if ( !result_ && search_ == second ) result_ . emplace( first );
+			return *this;
+		}
+
+		NODISCARD constexpr std::optional< First > Extract( ) noexcept { return result_; }
+
+	private
+	:
+		Second                 search_;
+		std::optional< First > result_ { };
+	};
+
 }
 
 namespace engine {
@@ -62,6 +82,14 @@ namespace engine {
 		{
 			return func_( deteil::SwitchByFirst< First, Second > {value} ) . Extract( );
 		}
+
+		constexpr std::optional< First > TryFindBySecond( Second value ) const
+		{
+			return func_( deteil::SwitchBySecond< First, Second > {value} ) . Extract( );
+		}
+
+		constexpr auto operator[]( First value ) const { return TryFindByFirst( value ); }
+		constexpr auto operator[]( Second value ) const { return TryFindBySecond( value ); }
 
 	private:
 		const BuilderFunc func_;
