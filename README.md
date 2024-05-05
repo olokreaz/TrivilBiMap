@@ -16,8 +16,8 @@ TrivilBiMap enumka = [](auto selector){
 
 ...
 
-auto e1 = enumka.TryFindByFirst("e1") // int e1 = 1
-auto s2 = enumka.TryFindBySecond(2) // string_view s2 = "e2"
-auto e3 = enumla["e3"] // e3 == 3
-auto e4 = enumla[4] // e4 == "e4"
+/*constexpr*/ auto e1 = enumka.TryFindByFirst("e1") // int e1 = 1
+/*constexpr*/ auto s2 = enumka.TryFindBySecond(2) // string_view s2 = "e2"
+/*constexpr*/ auto e3 = enumla["e3"] // e3 == 3
+/*constexpr*/ auto e4 = enumla[4] // e4 == "e4"
 ```
