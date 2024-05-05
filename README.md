@@ -14,6 +14,7 @@ TrivilBiMap enumka = [](auto selector){
     ...
     .Case("en", n);
 };
+
 ...
 
 auto e1 = enumka.TryFindByFirst("e1") // int e1 = 1
