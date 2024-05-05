@@ -2,7 +2,6 @@
 [BiMap implementation from userver-triks](https://youtu.be/FcQC19CX-AY?t=1655)
 
 ## usage:
----
 ```c++
 TrivilBiMap enumka = [](auto selector){
   return selector
