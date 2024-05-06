@@ -66,7 +66,7 @@ namespace deteil {
 
 }
 
-namespace engine {
+
 	template< class BuilderFunc > class TrivialBiMap final
 	{
 		using TypesPire = std::invoke_result_t< const BuilderFunc&, deteil::SwitchTypesDetector >;
@@ -94,4 +94,4 @@ namespace engine {
 	private:
 		const BuilderFunc func_;
 	};
-}
+
